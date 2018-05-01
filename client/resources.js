@@ -11,6 +11,6 @@ for (var i = 0; i < 255; i += 15) {
 		lineWidth: 0,
 		fillColor: color.formatHEX()
 	});
-	color.hue += spr;
+	color.hue += i;
 	Diamonds.push(spr);
 }

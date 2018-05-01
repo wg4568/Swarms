@@ -8,12 +8,19 @@ var interface = new Layer.UI();
 canvas.addLayer(render);
 canvas.addLayer(interface);
 
+var swarmers = [];
+
+for (var i = 0; i < 1000; i++) {
+	swarmers.push(new Swarmer());
+}
+
 timer.Start(function() {
 
-	render.rect(controls.mousePos, 100, 100, "red");
+	swarmers.forEach(function(s) {
+		s.logic(controls.mousePos);
+		s.draw(render);
+	});
 
-	if (!controls.mouseHeld(Mousecodes.LEFT)) {
-		render.fill("#00000010");
-	}
+	render.fill("#00000010");
 
 });
