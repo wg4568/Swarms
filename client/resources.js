@@ -1,6 +1,6 @@
 var Diamonds = [];
 
-var color = Color.RandomPastel;
+var color = Color.RandomNeon;
 for (var i = 0; i < 255; i += 15) {
 	var spr = new Sprite.Points([
 		new Vector(0, 0),
@@ -11,6 +11,6 @@ for (var i = 0; i < 255; i += 15) {
 		lineWidth: 0,
 		fillColor: color.formatHEX()
 	});
-	color.hue += i;
+	color.value = Helpers.RandomInt(150, 255);
 	Diamonds.push(spr);
 }

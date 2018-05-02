@@ -175,7 +175,6 @@ Layer.UI.Element.HealthBar = class extends Layer.UI.Element {
 	drawFunc(posn) {
 		var scaleFactor = this.value / this.maxValue;
 
-		this.layer.context.fillStyle = this.bgc;
 		this.layer.rect(posn, this.width, this.height, this.bgc)
 		this.layer.rect(Vector.Add(posn, this.edge), (this.width - (this.edge * 2)) * scaleFactor, this.height - (this.edge * 2), this.fgc);
 	}
