@@ -1,7 +1,7 @@
 class QuadTree {
 	constructor(xmin, xmax, ymin, ymax, max_size=4, points=[], min_width=25) {
 		this.max_size = max_size;
-		this.min_width = min_width
+		this.min_width = min_width;
 
 		this.xmin = xmin;
 		this.xmax = xmax;
@@ -39,7 +39,8 @@ class QuadTree {
 	}
 
 	retrieve(point) {
-		var idx;
+		// debugger;
+		var idx = 0;
 		if (point.x <= this.xdivide && point.y <= this.ydivide) idx = 0;
 		if (point.x <= this.xdivide && point.y >= this.ydivide) idx = 1;
 		if (point.x >= this.xdivide && point.y <= this.ydivide) idx = 2;

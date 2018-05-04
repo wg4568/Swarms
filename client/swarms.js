@@ -1,8 +1,9 @@
 class Swarmer {
-	constructor(sprite) {
+	constructor(sprite, uid="") {
 		this.prevPosn = Vector.Empty;
 		this.body = new Physics.Body();
 		this.body.friction = 0.95;
+		this.uid = uid;
 
 		this.sprite = sprite;
 
