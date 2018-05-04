@@ -18,6 +18,9 @@ Physics.Body = class {
 		this.friction = 1;
 	}
 
+	get x() { return this.posn.x; }
+	get y() { return this.posn.y; }
+
 	static IsRigidbody(obj) {
 		return obj instanceof Physics.Body;
 	}

@@ -1,5 +1,6 @@
 class Swarmer {
 	constructor(sprite) {
+		this.prevPosn = Vector.Empty;
 		this.body = new Physics.Body();
 		this.body.friction = 0.95;
 
@@ -9,6 +10,7 @@ class Swarmer {
 	}
 
 	logic(target) {
+		this.prevPosn = this.body.posn;
 
 		var distance = Helpers.DistanceBetween(this.body.posn, target);
 		var offset = Vector.Multiply(Vector.Random(-3, 3, -3, 3), distance, 0.3);
@@ -37,13 +39,13 @@ class Swarm {
 		this.size = size;
 		this.getTarget = getTarget;
 		this.hue = hue;
+		this.uid = Helpers.RandomString();
 
 		this.sprites = [];
 
 		var color = new Color(255, 0, 0);
 		color.hue = this.hue;
 		for (var i = 0; i < 255; i += 15) {
-			console.log(color);
 			var spr = new Sprite.Points([
 				new Vector(0, 0),
 				new Vector(10, 0),
@@ -61,11 +63,25 @@ class Swarm {
 		if (makeup > 0) {
 
 			for (var i = 0; i < makeup; i++) {
-				var s = new Swarmer(this.sprites[Helpers.RandomInt(0, 17)]);
+				var s = new Swarmer(this.sprites[Helpers.RandomInt(0, 17)], this.uid);
 				this.swarmers.push(s);
 			}
 
 		}
+	}
+
+	logic() {
+		var target = this.getTarget();
+		this.swarmers.forEach(function(s) {
+			s.logic(target);
+		});
+	}
+
+	draw(layer) {
+		var target = this.getTarget();
+		this.swarmers.forEach(function(s) {
+			s.draw(layer);
+		});
 	}
 
 	logicDraw(layer) {

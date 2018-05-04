@@ -103,10 +103,10 @@ class Controls {
 	}
 
 	frame() {
-		parent.keyboardState.pressed = {};
-		parent.keyboardState.released = {};
+		this.keyboardState.pressed = {};
+		this.keyboardState.released = {};
 
-		parent.mouseState.pressed = {};
-		parent.mouseState.released = {};
+		this.mouseState.pressed = {};
+		this.mouseState.released = {};
 	}
 }
