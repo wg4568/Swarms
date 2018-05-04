@@ -15,12 +15,17 @@ var swarm2 = new Swarm([], 100, function() {
 
 var quad = new QuadTree(0, window.innerWidth, 0, window.innerHeight, max_size=10);
 
+var DEBUG = prompt("DEBUG (y/n)?");
+var SPEED = prompt("SPEED");
+
 var FRAME = 0;
 setInterval(function() {
 
 	render.fill("#00000020");
 
-	// quad.draw(render);
+	if (DEBUG == "y") {
+		quad.draw(render);
+	}
 
 	swarm.logicDraw(render);
 	swarm2.logicDraw(render);
@@ -53,4 +58,4 @@ setInterval(function() {
 
 	controls.frame();
 	FRAME ++;
-}, prompt("SPEED"));
+}, SPEED);
